@@ -30,6 +30,10 @@ Luis is a Ph.D. student in Stats and is the Teaching Fellow for the course.
 
 Dan is a professor in the Math/Stat department and is the instructor for the course.
 
+## Angelo Orciuoli
+
+Angelo is a 4th year student studying Data Science and Math. 
+
 <!-- Please leave in the information below -->
 
 ### About this Template.
