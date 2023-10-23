@@ -2,6 +2,11 @@
 title: "Blog Post 1"
 subtitle: "3 Datasets"
 description:  |
+  3 datasets we found that could be study
+categories: []
+draft: false
+---
+
   Dataset 1: Heart Attack Risk Prediction Dataset
   https://www.kaggle.com/datasets/iamsouravbanerjee/heart-attack-prediction-dataset
   This dataset, obtained from Kaggle, comprises 26 variables and just
