@@ -15,7 +15,8 @@ description:  |
   can be adapted to compare different regions and create ethnic-like
   categories, enabling comparisons between Latin ethnic groups from Europe
   and South America, among other possibilities, without making broad
-  assumptions or stereotyping. Dataset 2: Vital Statistics Natality Birth
+  assumptions or stereotyping. 
+  Dataset 2: Vital Statistics Natality Birth
   https://www.nber.org/research/data/vital-statistics-natality-birth-data
   https://data.nber.org/nvss/natality/csv/nat2021us.csv Data 2021 Data on birth
   rates and demographics is provided by the National Vital Statistics System
@@ -46,6 +47,5 @@ description:  |
 author: ""
 date: "2023-10-23"
 date-modified: "2023-10-23"
-draft: FALSE
 ---
 
