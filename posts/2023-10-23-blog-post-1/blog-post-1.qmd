@@ -2,43 +2,19 @@
 title: "Blog Post 1"
 subtitle: "3 Datasets"
 description:  |
-  Dataset 1: Heart Attack Risk Prediction Dataset This dataset, obtained
-  from Kaggle, comprises 26 variables and just over 8000 observations. Its
-  original purpose was to assess the risk of a heart attack, but it also
-  includes variables related to other medical conditions, such as stress level,
-  diabetes, obesity, and more. Using these variables, we can explore various
-  questions, such as identifying the demographic groups most likely to develop
-  specific medical conditions. These demographics include but are not limited
-  to sex, age, and country of origin. While the dataset lacks a specific
-  ethnicity variable, it can be adapted to compare different regions and create
-  ethnic-like categories, enabling comparisons between Latin ethnic groups
-  from Europe and South America, among other possibilities, without making
-  broad assumptions or stereotyping. Dataset 2: Vital Statistics Natality Birth
-  Data 2021 Data on birth rates and demographics is provided by the National
-  Vital Statistics System of the National Center for Health Statistics. This
-  data pertains to births that occurred in a specific calendar year and is
-  derived from information extracted from birth certificates submitted to
-  vital statistics offices in each state and the District of Columbia. The
-  data files for the United States are structured as follows: Prior to 1972,
-  data was based on a 50-percent sample of birth certificates from all states.
-  However, starting in 1972, data transitioned to a 100-percent sample of birth
-  certificates from certain states, while the remaining states continued to
-  provide a 50-percent sample. Over time, the number of states contributing 100
-  percent of their records has grown, encompassing all states and the District
-  of Columbia by 1985. This dataset comprises a total of 369,928 observations
-  and encompasses 225 factors, which include variables such as the racial
-  background of parents and the health condition of the newborn. Specifically,
-  interested in examining the relationship between a mother's education,
-  race, and age in this dataset. Dataset 3 : Proportion adults who are current
-  smokers (2012-2018 California) This dataset was originally collected from
-  Let’s Healthy California (https://letsgethealthy.ca.gov/.), an organization
-  dedicated to fostering a collaborative and systematic approach to assess and
-  monitor the health status of Californians. The data within this dataset are
-  amassed monthly, drawing from a random sample of Californians aged 18 and
-  above. Our objective is to delve into the trends and prevalence of smoking
-  among adults in California. Furthermore, we aim to find the interplay between
-  various variables present in the dataset and understand how they influence
-  smoking percentages.
+  Dataset 1: Heart Attack Risk Prediction Dataset 
+  https://www.kaggle.com/datasets/iamsouravbanerjee/heart-attack-prediction-dataset
+  This dataset, obtained from Kaggle, comprises 26 variables and just over 8000 observations. Its original purpose was to assess the risk of a heart attack, but it also includes variables related to other medical conditions, such as stress level, diabetes, obesity, and more. Using these variables, we can explore various questions, such as identifying the demographic groups most likely to develop specific medical conditions. These demographics include but are not limited to sex, age, and country of origin. While the dataset lacks a specific ethnicity variable, it can be adapted to compare different regions and create ethnic-like categories, enabling comparisons between Latin ethnic groups from Europe and South America, among other possibilities, without making broad assumptions or stereotyping. 
+  
+  Dataset 2: Vital Statistics Natality Birth
+  https://www.nber.org/research/data/vital-statistics-natality-birth-data
+  https://data.nber.org/nvss/natality/csv/nat2021us.csv
+  Data 2021 Data on birth rates and demographics is provided by the National Vital Statistics System of the National Center for Health Statistics. This data pertains to births that occurred in a specific calendar year and is derived from information extracted from birth certificates submitted to vital statistics offices in each state and the District of Columbia. The data files for the United States are structured as follows: Prior to 1972, data was based on a 50-percent sample of birth certificates from all states. However, starting in 1972, data transitioned to a 100-percent sample of birth certificates from certain states, while the remaining states continued to provide a 50-percent sample. Over time, the number of states contributing 100 percent of their records has grown, encompassing all states and the District of Columbia by 1985. 
+  This dataset comprises a total of 369,928 observations and encompasses 225 factors, which include variables such as the racial background of parents and the health condition of the newborn. Specifically,interested in examining the relationship between a mother's education, race, and age in this dataset. \
+  
+  Dataset 3 : Proportion adults who are current smokers (2012-2018 California) 
+  https://catalog.data.gov/dataset/proportion-of-adults-who-are-current-smokers-lghc-indicator-b50c4
+  This dataset was originally collected from Let’s Healthy California (https://letsgethealthy.ca.gov/.), an organization dedicated to fostering a collaborative and systematic approach to assess and monitor the health status of Californians. The data within this dataset are amassed monthly, drawing from a random sample of Californians aged 18 and above. Our objective is to delve into the trends and prevalence of smoking among adults in California. Furthermore, we aim to find the interplay between various variables present in the dataset and understand how they influence smoking percentages.
 author: ""
 date: "2023-10-23"
 date-modified: "2023-10-23"
