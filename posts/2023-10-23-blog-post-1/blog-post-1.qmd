@@ -45,7 +45,6 @@ description:  |
   in the dataset and understand how they influence smoking percentages.
 author: ""
 date: "2023-10-23"
-categories: [All]
 date-modified: "2023-10-23"
 draft: FALSE
 ---
