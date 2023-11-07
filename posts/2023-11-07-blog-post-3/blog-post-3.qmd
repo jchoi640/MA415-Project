@@ -5,5 +5,26 @@ author: ""
 date: "2023-11-07"
 date-modified: "2023-11-07"
 ---
-[replace this line with content!!!!!!!!!!!!!]
+
+Our dataset:
+https://www.nber.org/research/data/vital-statistics-natality-birth-data
+This dataset contains a total of 3,669,928 observations with 225 different factors.The dataset is a valuable resource interested in understanding how maternal education, racial backgrounds, and maternal age impact various aspects of childbirth, healthcare, and demographic trends in the United States. It plays a critical role in addressing disparities and improving healthcare and support systems for expectant mothers and newborns
+
+Data Cleaning:
+
+Can eliminate the following variables: Mother’s  age, race, education, daily smoke before pregnancy, height in inches, bmi, weight in pound before pregnancy, weight in pound when delivered, gestational diabetes, Birth Weight
+
+Our focus: 
+We are trying to use variables to make inference on the age at which a woman is pregnant. We also might combine data from both parents, variables determine the child's health or even the child's weight. We are trying to discover the variable and effect on women’s maternity situations.
+
+Data for Equity
+Principle 1: Transparency
+For this principle, we will provide clear documentation on the process of how the data collected, cleaned, processed, and analyzed. To disclose transformations happening within  the data and the rationale of what we based on. 
+Principle 2: Privacy and Confidentiality
+Protect the privacy and confidentiality of individuals by ensuring that personally identifiable information is protected.Respecting individual privacy is essential for ethical data analysis and maintaining trust in the data collection process.
+Limitations 
+We have a large dataset with 3,669,928 observations, This may cause overfitting. To fix this problem, we currently plan to build a model with samples with partial data. Secondly, there may exist selection bias on the variable. In the dataset, there are 225 different factors. We might be influenced by our perception of choosing/cleaning the dataset, which might bring in some bias. To overcome this problem, we would examine the variable carefully and minimize the chance of this type of bias. 
+Potential for abuse or misuse 
+The dataset contains comprehensive information of each recordent, there exists potential privacy breach. Besides, they might contain Bias in Treatment. As the dataset contains the information about the economic status and geographic region information, the revelations may give rise to biased behaviors.  
+
 ---
