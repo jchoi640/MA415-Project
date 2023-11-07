@@ -8,9 +8,19 @@ output: html_document
 birthdata<-read.csv("nat2021us.csv")
 
 library(dplyr)
+set.seed(1000)
 birth <- birthdata |>
   filter(tbo_rec==1)|>
   #first child
-  select(mager, mrace6,dmar, meduc, cig_0, m_ht_in,bmi,pwgt_r,dwgt_r,rf_pdiab,dbwt,rcity_pop)
-#age,race, education, daily smoke before pregnancy, height in inches, bmi, weight in pound before pregancy, weight in pound when delivered, pre-diabetes, Birth Weight , mother live city population)
+  select(mager, mrace6,dmar, meduc, cig_0, m_ht_in,bmi,pwgt_r,dwgt_r,rf_gdiab,dbwt)|>
+#age,race, education, daily smoke before pregnancy, height in inches, bmi, weight in pound before pregancy, weight in pound when delivered, gestational diabetes, Birth Weight)
+  na.omit()|>
+  mutate(Race = ifelse(mrace6 == 1, "White", ifelse(mrace6 == 2, "Black",ifelse(mrace6 == 3, "AIAN",ifelse(mrace6 == 4, "Asian",ifelse(mrace6 == 5, "NHOPI", "Mixed"))))))|>
+  mutate(Married = ifelse(dmar == 1, 1,0))|>
+  mutate(GDiabetes = ifelse(rf_gdiab == "N", 0,1))|>
+  select(-mrace6,-dmar,-rf_gdiab)
+sample_size <- 100000  # Adjust the sample size as needed
+  birth_sample <- birth |>
+  sample_n(size = sample_size, replace = FALSE) # selected 100000 sample
+  
   
