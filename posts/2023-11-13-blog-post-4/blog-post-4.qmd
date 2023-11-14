@@ -5,6 +5,29 @@ description:  |
 author: "group 2"
 date: "2023-11-13"
 date-modified: "2023-11-13"
-draft: FALSE
 ---
 
+Blog post 4
+Our dataset:
+https://www.nber.org/research/data/vital-statistics-natality-birth-data
+
+As always, make lots of plots and try different types of plots. However, for this week’s post, only include at most 2 figures/tables/output for your EDA and at most 1 figure/table/output for the modeling. Try to put together figures that illustrate the main lesson’s you’ve learned this week.
+
+Main Variables
+As mentioned previously, the main goal of our analysis is to observe the factors that influence a child’s weight at birth. Hence, our response variable comes naturally as “dbwt” or the birth weight in grams. We decided to observe the impact of numerous predictor variables on the birth weight, including: 
+
+“mager”: Mother’s age of pregnancy
+“cig_before” (our variable): A variable we created that observes mothers who’ve smoked before pregnancy (“cig_0”), but not during(0 values for cig_1,cig_2, and cig_3) 
+“cig_during” (our variable): A variable we created that observes mothers who’ve smoked during pregnancy (positive values in cig_1, cig_2, cig_3, cig_0)
+“cig_none” (our variable): A variable we created that observes whether or not the mother smoked at all
+“rf_gdiab”: Gestational diabetes
+"previs":  Number of prenatal visits 
+“meduc”: Mother’s education in years 
+“bmi”: Mother’s BMI 
+
+Column Transformations
+We have transformed the cig_0 (daily number of cigarettes before pregnancy), cig_1 (daily number of cigarettes during 1st trimester), cig_2 (daily number of cigarettes during 2nd trimester), and cig_3 (daily number of cigarettes during 3rd trimester) variables, to create two new dummy variables: “cig_before”, “cig_during”, and “cig_none”. These dummy variables would show whether or not smoking only before, during, or none at all affect the weight of the infant. 
+
+Modeling
+In our subsequent analysis, we are going to utilize the plot to uncover the significant relationship between our response variable and treatment variable. To observe potentially more meaningful correlations between birth weight of the infant and variables pertaining to maternal information, we will be testing out different models. Our goal is to ensure that the model is statistically significant， offering practical relevance and accurate predictive ability. 
+---
