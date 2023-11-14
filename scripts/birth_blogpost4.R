@@ -9,10 +9,11 @@ summary(birthweightmodel)
 
 library(ggplot2)
 ggplot(birth_sample, aes(y = mager, x = meduc, color = Race)) +
-geom_smooth()
-  labs(x = "Maternal Age", y = "Education Level", 
-       title = "Scatter Plot of Maternal Age vs Education Level by Race")
+  geom_smooth(method = "gam", formula = y ~ s(x, k = 5))+
+  labs(x = "Education Level", y = "First Kid Birth Age", 
+       title = "First Kid Birth Age vs Prepreg Education Level")
+
 ggplot(birth_sample, aes(y = dbwt, x = mager, color = Race)) +
   geom_smooth() +
-  labs(x = "Maternal Age", y = "Education Level", 
-       title = "Scatter Plot of Maternal Age vs Prepreg Smoking")
+  labs(y = "Birthweight", x = "First Kid Birth Age", 
+       title = "Birthweight vs First Kid Birth Age")
