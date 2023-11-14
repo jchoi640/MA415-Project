@@ -8,11 +8,11 @@ birthweightmodel <- lm(mager ~ meduc+ m_ht_in+  bmi+ pwgt_r+ dwgt_r+  Married+ G
 summary(birthweightmodel)
 
 library(ggplot2)
-ggplot(birth_sample, aes(x = mager, y = meduc, color = Race)) +
-  geom_point() +
+ggplot(birth_sample, aes(y = mager, x = meduc, color = Race)) +
+geom_smooth()
   labs(x = "Maternal Age", y = "Education Level", 
        title = "Scatter Plot of Maternal Age vs Education Level by Race")
-ggplot(birth_sample, aes(x = mager, y = cig_before, color = Race)) +
-  geom_point() +
+ggplot(birth_sample, aes(y = dbwt, x = mager, color = Race)) +
+  geom_smooth() +
   labs(x = "Maternal Age", y = "Education Level", 
        title = "Scatter Plot of Maternal Age vs Prepreg Smoking")
