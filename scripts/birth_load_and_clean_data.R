@@ -28,19 +28,3 @@ birth_sample <- birth |>
   sample_n(size = sample_size, replace = FALSE) # selected 100000 sample
 
 write.csv(birth_sample, "cleanedbirth.csv", row.names = FALSE)
-
-birthweightmodel <- lm(dbwt ~ mager+ meduc+ m_ht_in+  bmi+ pwgt_r+ dwgt_r+  Married+ GDiabetes+ cig_before+ cig_during, data=birth_sample)
-summary(birthweightmodel)
-
-birthweightmodel <- lm(mager ~ meduc+ m_ht_in+  bmi+ pwgt_r+ dwgt_r+  Married+ GDiabetes+ cig_before+ cig_during, data=birth_sample)
-summary(birthweightmodel)
-
-library(ggplot2)
-ggplot(birth_sample, aes(x = mager, y = meduc, color = Race)) +
-  geom_point() +
-  labs(x = "Maternal Age", y = "Education Level", 
-       title = "Scatter Plot of Maternal Age vs Education Level by Race")
-ggplot(birth_sample, aes(x = mager, y = (dwgt_r-pwgt_r), color = Race)) +
-  geom_point() +
-  labs(x = "Maternal Age", y = "Education Level", 
-       title = "Scatter Plot of Maternal Age vs Education Level by Race")
