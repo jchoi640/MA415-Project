@@ -1,24 +1,17 @@
 ---
-title: "Blog post 5"
-author: "  "
-date: "2023-11-20"
-date-modified: "2023-11-20"
-
+title: "Blog Post 5"
+subtitle: "Combination of different datasets"
+author: ""
+date: "2023-11-21"
+date-modified: "2023-11-21"
+---
 To explore and understand mother marnterl data, we try to combining datasets for a more comprehensive analysis. 
 
 We choose Real Per Capita Personal Income data—from 2016 to 2021. In our ongoing journey to explore and understand complex economic trends, we've embarked on an ambitious project: combining multiple datasets for a more comprehensive analysis. We delve into the integration of a Real Per Capita Personal Income data—from 2016 to 2021 dataset. 
 
 
-Furthermore, we also combine following data:
-data from 2014-2021 Number of births: 3,664,292
-Birth rate: 11.0 per 1,000 population
-Fertility rate: 56.3 births per 1,000 women aged 15-44
-Percent born low birthweight: 8.52%
-Percent born preterm: 10.49%
-Percent unmarried: 40.0%
-Mean age at first birth: 27.3
+The process involves meticulously combining our original dataset with additional data, encompassing a range of CDC provided birth related variables from 2014 to 2021. These variables include the number of births, birth rate per 1,000 population, fertility rate per 1,000 women aged 15-44, percentages of births categorized as low birthweight and preterm, the percentage of unmarried mothers, and the mean age at first birth.
+
 
 
 We're still in the process of refining our analysis with new struture. There might need further data cleaning, exploring potential correlations, and following our past idea with our final project.
----
-
