@@ -5,7 +5,7 @@ date: "2023-10-23"
 output: html_document
 ---
   
-library(dplyr)
+  library(dplyr)
 set.seed(1000)
 sample_size <- 20000
 birth2021 <- read.csv("nat2021us.csv")
@@ -15,6 +15,7 @@ birth2021 <- birth2021 |>
   subset( select = c(mager, mrace6,dmar, meduc, cig_0, cig_1,cig_2,cig_3, m_ht_in,bmi,pwgt_r,dwgt_r,rf_gdiab,dbwt))|>
   #age,race, education, daily smoke before pregnancy, height in inches, bmi, weight in pound before pregancy, weight in pound when delivered, gestational diabetes, Birth Weight)
   na.omit()|>
+  mutate(mrace6 = round(mrace6/10, digit=0))|>
   mutate(Race = ifelse(mrace6 == 1, "White", ifelse(mrace6 == 2, "Black",ifelse(mrace6 == 3, "AIAN",ifelse(mrace6 == 4, "Asian",ifelse(mrace6 == 5, "NHOPI", "Mixed"))))))|>
   mutate(Married = ifelse(dmar == 1, 1,0))|>
   mutate(GDiabetes = ifelse(rf_gdiab == "N", 0,1))|>
@@ -33,6 +34,7 @@ birth2020 <- birth2020 |>
   subset( select = c(mager, mrace6,dmar, meduc, cig_0, cig_1,cig_2,cig_3, m_ht_in,bmi,pwgt_r,dwgt_r,rf_gdiab,dbwt))|>
   #age,race, education, daily smoke before pregnancy, height in inches, bmi, weight in pound before pregancy, weight in pound when delivered, gestational diabetes, Birth Weight)
   na.omit()|>
+  mutate(mrace6 = round(mrace6/10, digit=0))|>
   mutate(Race = ifelse(mrace6 == 1, "White", ifelse(mrace6 == 2, "Black",ifelse(mrace6 == 3, "AIAN",ifelse(mrace6 == 4, "Asian",ifelse(mrace6 == 5, "NHOPI", "Mixed"))))))|>
   mutate(Married = ifelse(dmar == 1, 1,0))|>
   mutate(GDiabetes = ifelse(rf_gdiab == "N", 0,1))|>
@@ -50,6 +52,7 @@ birth2019 <- birth2019 |>
   subset( select = c(mager, mrace6,dmar, meduc, cig_0, cig_1,cig_2,cig_3, m_ht_in,bmi,pwgt_r,dwgt_r,rf_gdiab,dbwt))|>
   #age,race, education, daily smoke before pregnancy, height in inches, bmi, weight in pound before pregancy, weight in pound when delivered, gestational diabetes, Birth Weight)
   na.omit()|>
+  mutate(mrace6 = round(mrace6/10, digit=0))|>
   mutate(Race = ifelse(mrace6 == 1, "White", ifelse(mrace6 == 2, "Black",ifelse(mrace6 == 3, "AIAN",ifelse(mrace6 == 4, "Asian",ifelse(mrace6 == 5, "NHOPI", "Mixed"))))))|>
   mutate(Married = ifelse(dmar == 1, 1,0))|>
   mutate(GDiabetes = ifelse(rf_gdiab == "N", 0,1))|>
@@ -67,6 +70,7 @@ birth2018 <- birth2018 |>
   subset( select = c(mager, mrace6,dmar, meduc, cig_0, cig_1,cig_2,cig_3, m_ht_in,bmi,pwgt_r,dwgt_r,rf_gdiab,dbwt))|>
   #age,race, education, daily smoke before pregnancy, height in inches, bmi, weight in pound before pregancy, weight in pound when delivered, gestational diabetes, Birth Weight)
   na.omit()|>
+  mutate(mrace6 = round(mrace6/10, digit=0))|>
   mutate(Race = ifelse(mrace6 == 1, "White", ifelse(mrace6 == 2, "Black",ifelse(mrace6 == 3, "AIAN",ifelse(mrace6 == 4, "Asian",ifelse(mrace6 == 5, "NHOPI", "Mixed"))))))|>
   mutate(Married = ifelse(dmar == 1, 1,0))|>
   mutate(GDiabetes = ifelse(rf_gdiab == "N", 0,1))|>
@@ -84,6 +88,7 @@ birth2017 <- birth2017 |>
   subset( select = c(mager, mrace6,dmar, meduc, cig_0, cig_1,cig_2,cig_3, m_ht_in,bmi,pwgt_r,dwgt_r,rf_gdiab,dbwt))|>
   #age,race, education, daily smoke before pregnancy, height in inches, bmi, weight in pound before pregancy, weight in pound when delivered, gestational diabetes, Birth Weight)
   na.omit()|>
+  mutate(mrace6 = round(mrace6/10, digit=0))|>
   mutate(Race = ifelse(mrace6 == 1, "White", ifelse(mrace6 == 2, "Black",ifelse(mrace6 == 3, "AIAN",ifelse(mrace6 == 4, "Asian",ifelse(mrace6 == 5, "NHOPI", "Mixed"))))))|>
   mutate(Married = ifelse(dmar == 1, 1,0))|>
   mutate(GDiabetes = ifelse(rf_gdiab == "N", 0,1))|>
@@ -101,6 +106,7 @@ birth2016 <- birth2016 |>
   subset( select = c(mager, mrace6,dmar, meduc, cig_0, cig_1,cig_2,cig_3, m_ht_in,bmi,pwgt_r,dwgt_r,rf_gdiab,dbwt))|>
   #age,race, education, daily smoke before pregnancy, height in inches, bmi, weight in pound before pregancy, weight in pound when delivered, gestational diabetes, Birth Weight)
   na.omit()|>
+  mutate(mrace6 = round(mrace6/10, digit=0))|>
   mutate(Race = ifelse(mrace6 == 1, "White", ifelse(mrace6 == 2, "Black",ifelse(mrace6 == 3, "AIAN",ifelse(mrace6 == 4, "Asian",ifelse(mrace6 == 5, "NHOPI", "Mixed"))))))|>
   mutate(Married = ifelse(dmar == 1, 1,0))|>
   mutate(GDiabetes = ifelse(rf_gdiab == "N", 0,1))|>
@@ -116,4 +122,4 @@ write.csv(birthdata, "cleanedbirth.csv", row.names = FALSE)
 
 
 
-  
+
