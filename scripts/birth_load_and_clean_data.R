@@ -29,3 +29,4 @@ birth_sample <- birth |>
   sample_n(size = sample_size, replace = FALSE) # selected 100000 sample
 
 write.csv(birth_sample, "dataset/cleanedbirth.csv", row.names = FALSE)
+
