@@ -3,6 +3,14 @@ title: "Blog post 6"
 author: "group 2"
 date: "2023-11-30"
 date-modified: "2023-11-30"
-draft: FALSE
 ---
+In the exploratory data analysis phase of our research, we meticulously selected a subset of 20,000 data points from each year spanning 2016 to 2021, from the extensive Vital Statistics Natality Birth Data. This strategic selection has allowed for a manageable yet representative dataset, enabling us to perform a more focused and detailed analysis. Our EDA process involves a multifaceted approach focused on the tendency of women first pregnant age and correlation, employing advanced statistical techniques to dissect and understand the nuances within the data. The aim here is to explore underlying trends, distributions, and potential relationships among key variables such as maternal age, education, race, and health conditions. By methodically visualizing and analyzing these yearly datasets, we aim to uncover evolving patterns and insights that could shed light on the factors influencing birth outcomes over these years.
 
+After careful consideration and preliminary analysis, our research has crystallized around a pivotal thesis focused on underage pregnancy. The thesis posits that "Underage pregnancy is intricately linked to a spectrum of socio-economic, educational, and health-related factors, and these relationships have evolved distinctly over the years from 2016 to 2021." This thesis is not a mere hypothesis but a guiding statement that shapes our research direction. It implies a complex interplay of various factors influencing underage pregnancy, with an emphasis on how these dynamics have changed over recent years. The goal of our research is to delve into these aspects, using our rich dataset to substantiate or refine our thesis, thereby contributing meaningful insights into the discourse on underage pregnancy.
+
+In the final stages of our research, significant emphasis is being placed on refining our visualizations and tables. Recognizing the crucial role of clear and compelling visuals in conveying complex data, we are employing tools like ggpubr for graph enhancements and the gt package for sophisticated table formatting. These tools not only aid in the aesthetic enhancement of our figures and tables but also ensure that they effectively communicate the nuances and findings of our analysis. Each visualization is carefully crafted to highlight key trends and insights, with special attention to detail in titles, captions, annotations, and highlights. This approach not only aids in the clarity of our presentation but also serves to reinforce and illustrate the primary findings and implications of our research, particularly in relation to our thesis on underage pregnancy.
+<<<<<<< HEAD
+---
+=======
+
+>>>>>>> fb8980d84d52a88d4476b23d16ed12658cb02e9f
