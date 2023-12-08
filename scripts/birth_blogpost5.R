@@ -9,7 +9,6 @@ library(dplyr)
 birthdata <-read.csv("dataset/cleanedbirth.csv")
 BirthStat <- read.csv("dataset/BirthStat.csv")
 YI <- read.csv("dataset/Yearly income data.csv")
-combirth
 combirth <- birthdata |>
   left_join(BirthStat, by = c("Year" = "Year"))
 combirth <- combirth |>

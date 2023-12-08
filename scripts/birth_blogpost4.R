@@ -1,11 +1,12 @@
 
-read.csv("dataset/cleanedbirth.csv")
+birth_sample<-read.csv("dataset/cleanedbirth.csv")
 
 birthweightmodel <- lm(dbwt ~ mager+ meduc+ m_ht_in+  bmi+ pwgt_r+ dwgt_r+  Married+ GDiabetes+ cig_before+ cig_during, data=birth_sample)
 summary(birthweightmodel)
 
-birthweightmodel <- lm(mager ~ meduc+ m_ht_in+  bmi+ pwgt_r+ dwgt_r+  Married+ GDiabetes+ cig_before+ cig_during, data=birth_sample)
-summary(birthweightmodel)
+motheragemodel <- lm(mager ~ Year+meduc+ m_ht_in+  bmi+ pwgt_r+ dwgt_r+  Married+ GDiabetes+ cig_before+ cig_during, data=birth_sample)
+summary(motheragemodel)
+AIC(motheragemodel)
 
 library(ggplot2)
 ggplot(birth_sample, aes(y = mager, x = meduc, color = Race)) +
@@ -17,3 +18,6 @@ ggplot(birth_sample, aes(y = dbwt, x = mager, color = Race)) +
   geom_smooth() +
   labs(y = "Birthweight", x = "First Kid Birth Age", 
        title = "Birthweight vs First Kid Birth Age")
+
+
+
