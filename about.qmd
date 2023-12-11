@@ -19,7 +19,7 @@ about:
 
 This comes from the file `about.qmd`.
 
-This is a website for the final project for MA[46]15 Data Science with R by Team TEAMNAME.
+This is a website for the final project for MA[46]15 Data Science with R by Team 2.
 The members of this team are below.
 
 ## Chang Liu
@@ -36,7 +36,7 @@ Senior student major in Statistics. Prefer name is Angel.
 
 ## Hao Yu
 
-Questrom'24, concentration in Business Analytic. 
+Questrom'24, concentration in Business Analytics. 
 
 
 ## Angelo Orciuoli
@@ -46,6 +46,10 @@ Angelo is a 4th year studying Data Science and Mathematics.
 ## Jesse Jungwon Choi 
 
 Jesse is a 2nd year studying Data Sciecne and Economics.
+
+## Jiabin Zheng
+
+Jiabin is a 4th year studying Mathematics and Statistics.
 
 ### About this Template.
 
