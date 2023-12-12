@@ -5,4 +5,73 @@ date: "2023-12-11"
 date-modified: "2023-12-11"
 
 ---
+```{r}
+library("caret")
+library("corrplot")
+library("tidyverse")
+library(dplyr)
+birth_sample<-read.csv("cleanedbirth.csv")
+BirthStat <- read.csv("dataset/BirthStat.csv")
+YI <- read.csv("dataset/Yearly income data.csv")
+birthdata <-read.csv("dataset/cleanedbirth.csv")
+combirth <- birthdata |>
+  left_join(BirthStat, by = c("Year" = "Year"))
+combirth <- combirth |>
+  left_join(YI, by = c("Year" = "Year"))
+birthweightmodel <- lm(dbwt ~ mager+ meduc+ m_ht_in+  bmi+ pwgt_r+ dwgt_r+  Married+ GDiabetes+ cig_before+ cig_during, data=birth_sample)
+summary(birthweightmodel)
+correlation_matrix <- 
+  birth_sample|>
+  select(-Race)|>
+  cor()
+corrplot(correlation_matrix, method = "circle", type = "upper", tl.col = "black", tl.srt = 45)
+panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...) {
+  usr <- par("usr")
+  on.exit(par(usr))
+  par(usr = c(0, 1, 0, 1))}
+  
+  
+motheragemodel <- lm(mager ~ Year+meduc + m_ht_in + bmi + pwgt_r + dwgt_r + Married + GDiabetes + cig_before + cig_during+Year, data = birth_sample)
+original_AIC <- AIC(motheragemodel)
+commotheragemodel<- lm(mager ~ Year+meduc + m_ht_in + bmi + pwgt_r + dwgt_r + Married + GDiabetes + cig_before + cig_during+Year, data = combirth)
+AIC(motheragemodel)
+motheragemodel <- lm(mager ~ Year+meduc+ m_ht_in+  bmi+ pwgt_r+ dwgt_r+  Married+ GDiabetes+ cig_before+ cig_during, data=birth_sample)
+summary(motheragemodel)
+AIC(motheragemodel)
+combirth$underage <- ifelse(birth_sample$mager < 18, 0, 1)
+logistic_model1 <- glm(underage ~ Year+Number.of.births+Birth.rate.per.1.000.population.+Fertility.rate.births.per.1.000.women.aged.15.44. +Percent.born.low.birthweight+Percent.born.preterm+ Percent.unmarried+Mean.age.at.first.birth+PCI+meduc + m_ht_in + bmi + pwgt_r + dwgt_r + Married + GDiabetes + cig_before + cig_during, family = binomial(), data = combirth)
+logistic_model2 <- glm(underage ~ Year+PCI+meduc + m_ht_in + bmi + pwgt_r + dwgt_r + Married + GDiabetes + cig_before + cig_during, 
+                      family = binomial(), 
+                      data = combirth)
+
+logistic_model3 <- glm(underage ~ Year+meduc + m_ht_in + bmi + pwgt_r + dwgt_r + Married + GDiabetes + cig_before + cig_during, 
+                      family = binomial(), 
+                      data = combirth)
+AIC(logistic_model1)
+AIC(logistic_model2)
+AIC(logistic_model3)
+summary(logistic_model3)
+set.seed(821)
+train_indices <- sample(1:nrow(combirth), 0.7 * nrow(combirth))
+train_data <- combirth[train_indices, ]
+test_data <- combirth[-train_indices, ]
+glmlogistic_model_train <- glm(underage ~ Year  + meduc + m_ht_in + bmi + pwgt_r + dwgt_r + Married + GDiabetes + cig_before + cig_during, 
+                               family = binomial(), 
+                               data = train_data)
+predictions <- predict(glmlogistic_model_train, newdata = test_data, type = "response")
+mse <- mean((test_data$underage - predictions)^2)
+print(mse)
+predicted_class <- ifelse(predictions > 0.5, 1, 0)
+accuracy <- mean(predicted_class == test_data$underage)
+print(accuracy)
+```
+# Summary of fundings. 
+logistic_model2 has a slightly lower AIC compared to logistic_model1, suggesting a better balance between goodness of fit and model complexity.
+logistic_model3 has a higher AIC, indicating a less favorable model fit compared to the other two.
+Firstly, Our regression model('motheragemodel') indicates a significant influence of mathernal age on birth outcomes. For every one-year increase in mathernal age, we observed a decreae in birth weight by about 4.85 grams.
+
+Secondly, our model also highlights the positive impact of mathernal education('meduc'). With each additional year of education, there's an estimated 8.92 grams increase in birth weight, and the p value is less than alpha, which shows the importance of education in maternal and child health.
+
+Lastly, Smoking habits before and during pregnancy (cig_before, cig_during) shows mothers who smoked before pregnancy had babies weighing 67.20 grams more than non-smokers. In addition, for mother who smoking during pregnancy, their babies weighing 259.91 grams less. This result shows extreme negative effects of continued smoking during pregnancy.
+
 
