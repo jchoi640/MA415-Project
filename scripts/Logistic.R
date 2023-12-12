@@ -10,7 +10,6 @@ logistic_model3 <- glm(underage ~ Year+meduc + m_ht_in + bmi + pwgt_r + dwgt_r +
 AIC(logistic_model1)
 AIC(logistic_model2)
 AIC(logistic_model3)
-# Summary of the model
 summary(logistic_model3)
 
 
