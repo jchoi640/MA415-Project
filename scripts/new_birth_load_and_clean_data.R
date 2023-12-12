@@ -8,7 +8,7 @@ output: html_document
   library(dplyr)
 set.seed(1000)
 sample_size <- 20000
-birth2021 <- read.csv("nat2021us.csv")
+birth2021 <- read.csv("dataset-ignore/nat2021us.csv")
 birth2021 <- birth2021 |>
   filter(tbo_rec==1)|>
   #first child
@@ -27,7 +27,7 @@ birth2021$Year <- 2021
 birth2021 <- sample_n(birth2021, size = sample_size)
 
 
-birth2020 <- read.csv("nat2020us.csv")
+birth2020 <- read.csv("dataset-ignore/nat2020us.csv")
 birth2020 <- birth2020 |>
   filter(tbo_rec==1)|>
   #first child
@@ -45,7 +45,7 @@ birth2020 <- birth2020 |>
 birth2020$Year <- 2020
 birth2020 <- sample_n(birth2020, size = sample_size)
 
-birth2019 <- read.csv("nat2019us.csv")
+birth2019 <- read.csv("dataset-ignore/nat2019us.csv")
 birth2019 <- birth2019 |>
   filter(tbo_rec==1)|>
   #first child
@@ -63,7 +63,7 @@ birth2019 <- birth2019 |>
 birth2019$Year <- 2019
 birth2019 <- sample_n(birth2019, size = sample_size)
 
-birth2018 <- read.csv("nat2018us.csv")
+birth2018 <- read.csv("dataset-ignore/nat2018us.csv")
 birth2018 <- birth2018 |>
   filter(tbo_rec==1)|>
   #first child
@@ -81,7 +81,7 @@ birth2018 <- birth2018 |>
 birth2018$Year <- 2018
 birth2018 <- sample_n(birth2018, size = sample_size)
 
-birth2017 <- read.csv("natl2017.csv")
+birth2017 <- read.csv("dataset-ignore/natl2017.csv")
 birth2017 <- birth2017 |>
   filter(tbo_rec==1)|>
   #first child
@@ -99,7 +99,7 @@ birth2017 <- birth2017 |>
 birth2017$Year <- 2017
 birth2017 <- sample_n(birth2017, size = sample_size)
 
-birth2016 <- read.csv("natl2016.csv")
+birth2016 <- read.csv("dataset-ignore/natl2016.csv")
 birth2016 <- birth2016 |>
   filter(tbo_rec==1)|>
   #first child
@@ -118,7 +118,7 @@ birth2016$Year <- 2016
 birth2016 <- sample_n(birth2016, size = sample_size)
 birthdata <- bind_rows(birth2021, birth2020, birth2019, birth2018, birth2017, birth2016)
 
-write.csv(birthdata, "cleanedbirth.csv", row.names = FALSE)
+write.csv(birthdata, "dataset/cleanedbirth.csv", row.names = FALSE)
 
 
 
