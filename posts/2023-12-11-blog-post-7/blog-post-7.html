@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -151,8 +185,212 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"caret"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ggplot2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lattice</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"corrplot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>corrplot 0.92 loaded</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.0</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+✖ purrr::lift()   masks caret::lift()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>birth_sample<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"cleanedbirth.csv"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>BirthStat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset/BirthStat.csv"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>YI <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset/Yearly income data.csv"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>birthdata <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"dataset/cleanedbirth.csv"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>combirth <span class="ot">&lt;-</span> birthdata <span class="sc">|&gt;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(BirthStat, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>combirth <span class="ot">&lt;-</span> combirth <span class="sc">|&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(YI, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>birthweightmodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(dbwt <span class="sc">~</span> mager<span class="sc">+</span> meduc<span class="sc">+</span> m_ht_in<span class="sc">+</span>  bmi<span class="sc">+</span> pwgt_r<span class="sc">+</span> dwgt_r<span class="sc">+</span>  Married<span class="sc">+</span> GDiabetes<span class="sc">+</span> cig_before<span class="sc">+</span> cig_during, <span class="at">data=</span>birth_sample)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(birthweightmodel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = dbwt ~ mager + meduc + m_ht_in + bmi + pwgt_r + 
+    dwgt_r + Married + GDiabetes + cig_before + cig_during, data = birth_sample)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3347.0  -289.1    35.3   347.1  7253.0 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 2130.88988   31.53166  67.579  &lt; 2e-16 ***
+mager         -4.84537    0.39108 -12.390  &lt; 2e-16 ***
+meduc          8.92433    1.30215   6.854 7.24e-12 ***
+m_ht_in       17.59571    0.49910  35.255  &lt; 2e-16 ***
+bmi           -3.55587    0.36027  -9.870  &lt; 2e-16 ***
+pwgt_r         0.19442    0.03625   5.363 8.22e-08 ***
+dwgt_r         0.39368    0.01918  20.523  &lt; 2e-16 ***
+Married       86.43417    4.22763  20.445  &lt; 2e-16 ***
+GDiabetes     -5.43742    7.37829  -0.737    0.461    
+cig_before    67.20483   11.59933   5.794 6.90e-09 ***
+cig_during  -259.91138    8.08793 -32.136  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 596.4 on 119989 degrees of freedom
+Multiple R-squared:  0.03344,   Adjusted R-squared:  0.03336 
+F-statistic: 415.1 on 10 and 119989 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="ot">&lt;-</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  birth_sample<span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Race)<span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(correlation_matrix, <span class="at">method =</span> <span class="st">"circle"</span>, <span class="at">type =</span> <span class="st">"upper"</span>, <span class="at">tl.col =</span> <span class="st">"black"</span>, <span class="at">tl.srt =</span> <span class="dv">45</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="blog-post-7_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>panel.cor <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">prefix =</span> <span class="st">""</span>, cex.cor, ...) {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  usr <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="st">"usr"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">on.exit</span>(<span class="fu">par</span>(usr))</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">usr =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>))}</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>motheragemodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(mager <span class="sc">~</span> Year<span class="sc">+</span>meduc <span class="sc">+</span> m_ht_in <span class="sc">+</span> bmi <span class="sc">+</span> pwgt_r <span class="sc">+</span> dwgt_r <span class="sc">+</span> Married <span class="sc">+</span> GDiabetes <span class="sc">+</span> cig_before <span class="sc">+</span> cig_during<span class="sc">+</span>Year, <span class="at">data =</span> birth_sample)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>original_AIC <span class="ot">&lt;-</span> <span class="fu">AIC</span>(motheragemodel)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>commotheragemodel<span class="ot">&lt;-</span> <span class="fu">lm</span>(mager <span class="sc">~</span> Year<span class="sc">+</span>meduc <span class="sc">+</span> m_ht_in <span class="sc">+</span> bmi <span class="sc">+</span> pwgt_r <span class="sc">+</span> dwgt_r <span class="sc">+</span> Married <span class="sc">+</span> GDiabetes <span class="sc">+</span> cig_before <span class="sc">+</span> cig_during<span class="sc">+</span>Year, <span class="at">data =</span> combirth)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(motheragemodel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 696234.4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>motheragemodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(mager <span class="sc">~</span> Year<span class="sc">+</span>meduc<span class="sc">+</span> m_ht_in<span class="sc">+</span>  bmi<span class="sc">+</span> pwgt_r<span class="sc">+</span> dwgt_r<span class="sc">+</span>  Married<span class="sc">+</span> GDiabetes<span class="sc">+</span> cig_before<span class="sc">+</span> cig_during, <span class="at">data=</span>birth_sample)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(motheragemodel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mager ~ Year + meduc + m_ht_in + bmi + pwgt_r + 
+    dwgt_r + Married + GDiabetes + cig_before + cig_during, data = birth_sample)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-19.8342  -3.1093  -0.7844   2.3355  27.8346 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -1.006e+02  1.505e+01  -6.685 2.31e-11 ***
+Year         5.761e-02  7.454e-03   7.729 1.09e-14 ***
+meduc        1.565e+00  8.482e-03 184.520  &lt; 2e-16 ***
+m_ht_in      1.698e-02  3.683e-03   4.611 4.02e-06 ***
+bmi          2.834e-02  2.659e-03  10.660  &lt; 2e-16 ***
+pwgt_r      -1.884e-03  2.676e-04  -7.039 1.95e-12 ***
+dwgt_r       1.322e-03  1.415e-04   9.345  &lt; 2e-16 ***
+Married      2.844e+00  3.011e-02  94.477  &lt; 2e-16 ***
+GDiabetes    1.505e+00  5.430e-02  27.714  &lt; 2e-16 ***
+cig_before   2.830e-01  8.564e-02   3.304 0.000952 ***
+cig_during   7.578e-01  5.966e-02  12.701  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.402 on 119989 degrees of freedom
+Multiple R-squared:  0.4179,    Adjusted R-squared:  0.4178 
+F-statistic:  8614 on 10 and 119989 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(motheragemodel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 696234.4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>combirth<span class="sc">$</span>underage <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(birth_sample<span class="sc">$</span>mager <span class="sc">&lt;</span> <span class="dv">18</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>logistic_model1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(underage <span class="sc">~</span> Year<span class="sc">+</span>Number.of.births<span class="sc">+</span>Birth.rate.per.<span class="dv">1</span>.<span class="fl">000.</span>population.<span class="sc">+</span>Fertility.rate.births.per.<span class="dv">1</span>.<span class="fl">000.</span>women.aged.<span class="dv">15</span>.<span class="fl">44.</span> <span class="sc">+</span>Percent.born.low.birthweight<span class="sc">+</span>Percent.born.preterm<span class="sc">+</span> Percent.unmarried<span class="sc">+</span>Mean.age.at.first.birth<span class="sc">+</span>PCI<span class="sc">+</span>meduc <span class="sc">+</span> m_ht_in <span class="sc">+</span> bmi <span class="sc">+</span> pwgt_r <span class="sc">+</span> dwgt_r <span class="sc">+</span> Married <span class="sc">+</span> GDiabetes <span class="sc">+</span> cig_before <span class="sc">+</span> cig_during, <span class="at">family =</span> <span class="fu">binomial</span>(), <span class="at">data =</span> combirth)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>logistic_model2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(underage <span class="sc">~</span> Year<span class="sc">+</span>PCI<span class="sc">+</span>meduc <span class="sc">+</span> m_ht_in <span class="sc">+</span> bmi <span class="sc">+</span> pwgt_r <span class="sc">+</span> dwgt_r <span class="sc">+</span> Married <span class="sc">+</span> GDiabetes <span class="sc">+</span> cig_before <span class="sc">+</span> cig_during, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="fu">binomial</span>(), </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> combirth)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>logistic_model3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(underage <span class="sc">~</span> Year<span class="sc">+</span>meduc <span class="sc">+</span> m_ht_in <span class="sc">+</span> bmi <span class="sc">+</span> pwgt_r <span class="sc">+</span> dwgt_r <span class="sc">+</span> Married <span class="sc">+</span> GDiabetes <span class="sc">+</span> cig_before <span class="sc">+</span> cig_during, </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="fu">binomial</span>(), </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> combirth)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(logistic_model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18959.16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(logistic_model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18953.39</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(logistic_model3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22206.89</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logistic_model3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = underage ~ Year + meduc + m_ht_in + bmi + pwgt_r + 
+    dwgt_r + Married + GDiabetes + cig_before + cig_during, family = binomial(), 
+    data = combirth)
+
+Coefficients:
+              Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -1.140e+02  2.104e+01  -5.417 6.06e-08 ***
+Year         5.525e-02  1.042e-02   5.300 1.16e-07 ***
+meduc        1.784e+00  2.549e-02  69.980  &lt; 2e-16 ***
+m_ht_in     -1.644e-02  5.659e-03  -2.905  0.00367 ** 
+bmi          4.782e-02  5.233e-03   9.137  &lt; 2e-16 ***
+pwgt_r      -4.134e-03  5.000e-04  -8.269  &lt; 2e-16 ***
+dwgt_r       1.453e-03  2.560e-04   5.674 1.39e-08 ***
+Married      3.336e+00  1.116e-01  29.890  &lt; 2e-16 ***
+GDiabetes    9.403e-01  1.289e-01   7.296 2.97e-13 ***
+cig_before   6.958e-01  1.204e-01   5.777 7.60e-09 ***
+cig_during   1.166e+00  7.998e-02  14.581  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 37715  on 119999  degrees of freedom
+Residual deviance: 22185  on 119989  degrees of freedom
+AIC: 22207
+
+Number of Fisher Scoring iterations: 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">821</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>train_indices <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(combirth), <span class="fl">0.7</span> <span class="sc">*</span> <span class="fu">nrow</span>(combirth))</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> combirth[train_indices, ]</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> combirth[<span class="sc">-</span>train_indices, ]</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>glmlogistic_model_train <span class="ot">&lt;-</span> <span class="fu">glm</span>(underage <span class="sc">~</span> Year  <span class="sc">+</span> meduc <span class="sc">+</span> m_ht_in <span class="sc">+</span> bmi <span class="sc">+</span> pwgt_r <span class="sc">+</span> dwgt_r <span class="sc">+</span> Married <span class="sc">+</span> GDiabetes <span class="sc">+</span> cig_before <span class="sc">+</span> cig_during, </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                               <span class="at">family =</span> <span class="fu">binomial</span>(), </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">data =</span> train_data)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(glmlogistic_model_train, <span class="at">newdata =</span> test_data, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> <span class="fu">mean</span>((test_data<span class="sc">$</span>underage <span class="sc">-</span> predictions)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02787073</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>predicted_class <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(predictions <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>accuracy <span class="ot">&lt;-</span> <span class="fu">mean</span>(predicted_class <span class="sc">==</span> test_data<span class="sc">$</span>underage)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9590556</code></pre>
+</div>
+</div>
+<section id="summary-of-fundings." class="level1">
+<h1>Summary of fundings.</h1>
+<p>logistic_model2 has a slightly lower AIC compared to logistic_model1, suggesting a better balance between goodness of fit and model complexity. logistic_model3 has a higher AIC, indicating a less favorable model fit compared to the other two. Firstly, Our regression model(‘motheragemodel’) indicates a significant influence of mathernal age on birth outcomes. For every one-year increase in mathernal age, we observed a decreae in birth weight by about 4.85 grams.</p>
+<p>Secondly, our model also highlights the positive impact of mathernal education(‘meduc’). With each additional year of education, there’s an estimated 8.92 grams increase in birth weight, and the p value is less than alpha, which shows the importance of education in maternal and child health.</p>
+<p>Lastly, Smoking habits before and during pregnancy (cig_before, cig_during) shows mothers who smoked before pregnancy had babies weighing 67.20 grams more than non-smokers. In addition, for mother who smoking during pregnancy, their babies weighing 259.91 grams less. This result shows extreme negative effects of continued smoking during pregnancy.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
