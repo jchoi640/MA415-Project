@@ -11,16 +11,22 @@ draft: false
 This comes from the file `analysis.qmd`.
 
 We describe here our detailed data analysis.
-This page will provide an overview of what questions you hope to ask, illustrations relevant aspects of the data with tables and figures, and a statistical model that attempts to answer part of the question.
-You'll also reflect on next steps and further analysis.
+
 
 
 ```{r}
 library(tidyverse)
+cleanedbirth <- read_csv(here::here("dataset", "cleanedbirth.csv"))
+
+write_csv(cleanedbirth, file = here::here("dataset", "cleanedbirth.csv"))
+
+save(cleanedbirth, file = here::here("dataset/cleanedbirth.RData"))
+
 print(getwd())
-data <- read_csv(here::here("dataset/loan_refusal_clean.csv"))
-load(here::here("dataset/loan_refusal.RData"))
+cleanedbirth <- read_csv(here::here("dataset", "cleanedbirth.csv"))
+
 print(ls())
+show_col_types = FALSE
 ```
 
 ## Data Analysis: Unraveling the Ties Between Education, Age, and Motherhood
@@ -45,6 +51,7 @@ The first model AIC scores were 685678.3. The second model AIC scores were 69567
 ![](images/Learning-regression-result.png)
 
 ![](images/Mother_historgram.png)
+
 To summarize we chose the second model. Since the Figure “Histogram of Mother’s Age” shows that our dependent variable is slightly right-skewed, in order to make the age dependent variable more normal, we log-transformed the dependent variable. And the Adjusted R- Squared went from 0.4206 to 0.4506 with a significant increase, while the AIC decreased significantly, from 695675.6 to -993302.25 with a significant decrease. Our logarithmic transformation gets better later, as it is a bit more normalized with respect to the age distribution we were trying to predict. However, the large drop that occurs is surprising and could mean that we are now using a better model, but the reason for such a significant drop is still puzzling and deserves to be investigated later.
 
 ![](images/linear-coef.png)
