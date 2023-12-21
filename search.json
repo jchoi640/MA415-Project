@@ -161,6 +161,20 @@
     "text": "Limitations and Area for Improvements\n\nFirst limitation in our work is the high correlation between age and education in our data, and we struggle to mitigate the risk of collinearity caused by these two variables. In the future, we might explore using PCA or other techniques to address this issue and generate deeper insights among the variables.\nSecondly, our logistic model initially suffers from imbalance, with only a small portion of the dataset representing underage pregnancy. This presents a risk of bias in an imbalanced dataset. To counteract this bias, we implemented blocking on the underage pregnancy variable, selecting 10,000 cases of underage pregnancy and 10,000 cases of non-underage pregnancy. However, this blocking significantly reduces the effect of the year on the logistic model. In the future, we might develop more balanced models or improve our blocking methods.\nAdditionally, incorporating data on factors not included in our study, such as cultural influences or access to healthcare, could further refine our understanding."
   },
   {
+    "objectID": "analysis.html#link-for-our-presentation-video",
+    "href": "analysis.html#link-for-our-presentation-video",
+    "title": "Analysis",
+    "section": "link for our presentation video",
+    "text": "link for our presentation video"
+  },
+  {
+    "objectID": "analysis.html#httpsdrive.google.comfiled1ebvd1jb0ud7xj1ztwe2pyhad5nvxlat6viewpli1",
+    "href": "analysis.html#httpsdrive.google.comfiled1ebvd1jb0ud7xj1ztwe2pyhad5nvxlat6viewpli1",
+    "title": "Analysis",
+    "section": "https://drive.google.com/file/d/1eBVD1jB0UD7xJ1ZtwE2PYHaD5nVXlAt6/view?pli=1",
+    "text": "https://drive.google.com/file/d/1eBVD1jB0UD7xJ1ZtwE2PYHaD5nVXlAt6/view?pli=1"
+  },
+  {
     "objectID": "big_picture.html",
     "href": "big_picture.html",
     "title": "Big Picture",
