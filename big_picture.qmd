@@ -8,79 +8,33 @@ draft: FALSE
 
 This comes from the file `big_picture.Rmd`.
 
-Think of this page as your 538/Upshot style article. This means that you should try to tell a story through the data and your analysis. Read articles from those sites and similar sites to get a feeling for what they are like. Importantly, these should be geared towards the general public. You shouldn't assume the reader understands how to interpret a linear regression. Focus on interpretation and visualizations.
-
-
 ## How Education Levels are Redefining Motherhood Across Race
 
 ### Problem We Aim to Solve
 
-Underage pregnancies, this simple yet loaded question outlines a phenomenon that plagues families and societies all around the world. They are at a higher risk for pregnancy-related high blood pressure and its complications. Risks for the baby include premature birth and a low birth weight. Additionally, underage pregnancies can easily compromise a struggling family's finances with the additional burden of a child they were not prepared for. According to data from the National Library of Medicine, Underage pregnancies have decreased globally, from 64.5 per 1000 women in 2000 to 42.5 per 1000 women in 2021. However, there are huge differences in levels between and within countries and race. 
+Underage pregnancies, this simple yet loaded question outlines a phenomenon that plagues families and societies all around the world. Younger mothers are at higher risk for pregnancy-related high blood pressure and its complications. Risks for the baby may include premature birth and a low birth weight. Additionally, underage pregnancies can easily compromise a struggling family's finances with the additional burden of a child they were not prepared for. According to data from the National Library of Medicine, Underage pregnancies have decreased globally, from 64.5 per 1000 women in 2000 to 42.5 per 1000 women in 2021. However, there are huge differences in levels between and within countries and race. 
 
 ### Pattern Behind the Data
 In order to investigate the causes of underage pregnancies, our team conducted various statistical analyses using data from the National Bureau of Economic Research, specifically Natality Birth Data. We select random samples from 2016 to 2021 and combine them together for a comprehensive analysis, focusing on motherhood across different races and examining how education influences the age at which women begin motherhood. With running linear and logistic regression analyses, Underage pregnancy shows intricately linked to a spectrum of socio-economic, educational, and health-related factors, and these relationships have evolved distinctly.
 
 ![](images/time&income.jpg)
 
-women from different racial backgrounds are having their first child from the year 2016 to 2021. The trend lines indicate that for some race groups, like Asian and White, the age of first-time motherhood is gradually increasing. For other groups, the lines are relatively flat, suggesting that the age of first birth remains constant. Overall, from 2016 to 2021, there is a steady or increasing age of first birth which may indicate a need for increased reproductive health education during later stages of life. Furthermore, we incorporate the dataset about Real Per Capita Personal Income for the United States (RPIPCUS) from 2016 to 2021. In the “First Kid Birth Age vs real per Capita”, as real per capita income increases, so does the age at which women have their first child, especially among Asian and White populations, suggests that economic stability may play a role in family planning decisions.
+The figure “First Kid Birth Age vs Year” shows first kid birth age change over time. It shows the average age at which women from different racial backgrounds are having their first child from the year 2016 to 2021. The trend lines indicate that for some race groups, like Asian and White, the age of first-time motherhood is gradually increasing. For other groups, the lines are relatively flat, suggesting that the age of first birth remains constant. Overall, from 2016 to 2021, there is a steady or increasing age of first birth which may indicate a need for increased reproductive health education during later stages of life. Furthermore, we incorporate the dataset about Real Per Capita Personal Income for the United States (RPIPCUS) from 2016 to 2021. In the “First Kid Birth Age vs real per Capita”, as real per capita income increases, so does the age at which women have their first child, especially among Asian and White populations, suggests that economic stability may play a role in family planning decisions.
 
 ![](images/1st-vs-edu.png)
 
-In the “First Kid Birth Age vs Prepreg Education Level Graph”, the relationship between a woman's education level (measured from less than high school to doctorate degrees) and the age at which she has her first child is overall positive. higher education levels generally correlate with older ages at first birth, a trend consistent across all racial groups. However, the slopes and positions of the lines vary, suggesting that the influence of education on family planning decisions is experienced differently across racial communities.
+In the “First Kid Birth Age vs Prepreg Education Level Graph”, the relationship between a woman's education level (measured from less than high school to doctorate degrees) and the age at which she has her first child is overall positive. Higher education levels generally correlate with older ages at first birth, a trend consistent across all racial groups. However, the slopes and positions of the lines vary, suggesting that the influence of education on family planning decisions is experienced differently across racial communities. A notable observation is a peak around education level 6, which corresponds to a Bachelor's degree (BA, AB, BS). With the exception of Asians, most racial groups show a decline in first birth rates after reaching education level 6. Furthermore, the dataset records the age at first birth, which can lead to a confounding situation. This is because individuals who give birth at a younger age may have a lower likelihood of continuing their education. We will provide further explanation about our model in the Analysis section.
 
 ## Our Goal
 
 Overall, our model and study hope to be more than a theoretical exercise. We wish that our model could inform targeted educational programs that empower women to make informed decisions about motherhood. It could also assist healthcare providers to anticipate and meet the needs of expectant mothers, finally beneficial to the health and well-being of the next generation.
 
-## Rubric: On this page
+## Resources and Further Information
 
-You will
+https://www.who.int/news-room/fact-sheets/detail/adolescent-pregnancy 
 
+* WHO collaborates with various partners to promote awareness of adolescent issues, enhance the evidence and epidemiological foundation for intervention, create and assess program support tools, strengthen capabilities, and initiate pilot projects in an increasing number of countries that acknowledge the importance of addressing adolescents' sexual and reproductive health needs.
 
-
-* Title
-  * Your big picture page should have a creative/click-bait-y title/headline that provides a hint about your thesis.
-* Clarity of Explanation
-  * You should have a clear thesis/goal for this page. What are you trying to show? Make sure that you explain your analysis in detail but don't go into top much mathematics or statistics. The audience for this page is the general public (to the extent possible). Your thesis should be a statement, not a question.
-  * Each figure should be very polished and also not too complicated. There should be a clear interpretation of the figure so the figure has a clear purpose. Even something like a histogram can be difficult to interpret for non-experts.
-* Creativity
-  * Do your best to make things interesting. Think of a story. Think of how each part of your analysis supports the previous part or provides a different perspective.
-* This page should be self-contained.
-  
-**Note**: This page should have no code visible, i.e. use `#| echo: FALSE`.  
-
+https://www.cdc.gov/reproductivehealth/maternalinfanthealth/pregnancy-complications.html 
+* To enhance support and information regarding pregnancy, the CDC information on healthcare before, during, and after pregnancy to reduce the risk of complications. Individuals who are pregnant or have recently given birth have access to consult their healthcare provider about any concerns and to seek immediate medical attention if they experience urgent maternal warning signs during or after pregnancy.
 ---
-
-## Rubric: Other components
-
-### Interactive
-
-You will also be required to make an interactive dashboard like [this one](/flex/flex.html).
-
-Your Big Data page should include a link to an interactive dashboard. The dashboard should be created either using Shiny or FlexDashboard (or another tool with professor's approval). This interactive component should in some way support your thesis from your big picture page. Good interactives often provide both high-level understanding of the data while allowing a user to investigate specific scenarios, observations, subgroups, etc.
-
-* Quality and ease of use of the interactive components.
-Is it clear what can be explored using your interactive components?
-Does it enhance and reinforce your conclusions from the Big Picture?
-Plotly with default hover text will get no credit. Be creative!
-
-
-### Video Recording
-
-Make a video recording (probably using Zoom) demonstrating your interactive components.
-You should provide a quick explanation of your data and demonstrate some of the conclusions from your EDA.
-This video should be no longer than 4 minutes.
-Include a link to your video (and password if needed) in your README.md file on your Github repository. You are not required to provide a link on the website.
-This can be presented by any subset of the team members.
-
-
-### Rest of the Site
-
-Finally, here are important things to keep in mind for the rest of the site. 
-
-The main title of your page is informative.
-Each post has an author/description/informative title.
-All lab required posts are present.
-Each page (including the home page) has a nice featured image associated with it.
-Your about page is up to date and clean.
-You have removed the generic posts from the initial site template.
