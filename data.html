@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -147,13 +113,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-makes-a-good-data-set" id="toc-what-makes-a-good-data-set" class="nav-link active" data-scroll-target="#what-makes-a-good-data-set">What makes a good data set?</a></li>
-  <li><a href="#where-to-keep-data" id="toc-where-to-keep-data" class="nav-link" data-scroll-target="#where-to-keep-data">Where to keep data?</a>
-  <ul class="collapse">
-  <li><a href="#sharing-your-data" id="toc-sharing-your-data" class="nav-link" data-scroll-target="#sharing-your-data">Sharing your data</a></li>
+  <li><a href="#data-source" id="toc-data-source" class="nav-link active" data-scroll-target="#data-source">Data source</a></li>
   <li><a href="#load-and-clean-data-script" id="toc-load-and-clean-data-script" class="nav-link" data-scroll-target="#load-and-clean-data-script">Load and clean data script</a></li>
-  </ul></li>
-  <li><a href="#rubric-on-this-page" id="toc-rubric-on-this-page" class="nav-link" data-scroll-target="#rubric-on-this-page">Rubric: On this page</a></li>
+  <li><a href="#data-source-1" id="toc-data-source-1" class="nav-link" data-scroll-target="#data-source-1">Data source</a></li>
+  <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link" data-scroll-target="#about-the-data">About the data</a></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">data cleaning</a></li>
   </ul>
 </nav>
     </div>
@@ -184,109 +148,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><img src="images/data-photo.webp" class="img-fluid"></p>
 <p>This comes from the file <code>data.qmd</code>.</p>
-<p>Your first steps in this project will be to find data to work on.</p>
-<p>I recommend trying to find data that interests you and that you are knowledgeable about. A bad example would be if you have no interest in video games but your data set is about video games. I also recommend finding data that is related to current events, social justice, and other areas that have an impact.</p>
-<p>Initially, you will study <em>one dataset</em> but later you will need to combine that data with another dataset. For this reason, I recommend finding data that has some date and/or location components. These types of data are conducive to interesting visualizations and analysis and you can also combine this data with other data that also has a date or location variable. Data from the census, weather data, economic data, are all relatively easy to combine with other data with time/location components.</p>
-<section id="what-makes-a-good-data-set" class="level2">
-<h2 class="anchored" data-anchor-id="what-makes-a-good-data-set">What makes a good data set?</h2>
-<ul>
-<li>Data you are interested in and care about.</li>
-<li>Data where there are a lot of potential questions that you can explore.</li>
-<li>A data set that isn’t completely cleaned already.</li>
-<li>Multiple sources for data that you can combine.</li>
-<li>Some type of time and/or location component.</li>
-</ul>
+<section id="data-source" class="level2">
+<h2 class="anchored" data-anchor-id="data-source">Data source</h2>
+<p>Our dataset: https://www.nber.org/research/data/vital-statistics-natality-birth-data This extensive dataset comprises 3,669,928 observations encompassing 225 distinct factors. This Natality Data, sourced from the National Vital Statistics System by the National Center for Health Statistics, offers comprehensive demographic and health information pertaining to births within a given calendar year. This microdata is meticulously compiled from details extracted from birth certificates filed across the statistics offices of each state and the District of Columbia, providing a robust foundation for in-depth analysis and insights into the dynamics of childbirth and associated health trends.</p>
+<p>For our study, the dataset stands as a valuable resource for seeking insights into the intricate interplay of maternal education, racial backgrounds, and maternal age on diverse facets of childbirth, healthcare, and demographic trends in the United States. This dataset plays a pivotal role in elucidating disparities and serves as a cornerstone for enhancing healthcare and support systems for expectant mothers and newborns, ultimately contributing to the advancement of maternal and child well-being.</p>
 </section>
-<section id="where-to-keep-data" class="level2">
-<h2 class="anchored" data-anchor-id="where-to-keep-data">Where to keep data?</h2>
-<p>Below 50mb: In <code>dataset</code> folder</p>
-<p>Above 50mb: In <code>dataset_ignore</code> folder. This folder will be ignored by <code>git</code> so you’ll have to manually sync these files across your team.</p>
-<section id="sharing-your-data" class="level3">
-<h3 class="anchored" data-anchor-id="sharing-your-data">Sharing your data</h3>
-<p>For small datasets (&lt;50mb), you can use the <code>dataset</code> folder that is tracked by github. Add the files just like you would any other file.</p>
-<p>If you create a folder named <code>data</code> this will cause problems.</p>
-<p>For larger datasets, you’ll need to create a new folder in the project root directory named <code>dataset-ignore</code>. This will be ignored by git (based off the <code>.gitignore</code> file in the project root directory) which will help you avoid issues with Github’s size limits. Your team will have to manually make sure the data files in <code>dataset-ignore</code> are synced across team members.</p>
-<p>Your <a href="./scripts/load_and_clean_data.R">load_and_clean_data.R</a> file is how you will load and clean your data. Here is a an example of a very simple one.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"scripts/load_and_clean_data.R"</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span> <span class="co"># Use echo=FALSE or omit it to avoid code output  </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-&gt; library(tidyverse)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.3     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.3     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-&gt; loan_data &lt;- read_csv(here::here("dataset", "loan_refusal.csv"))</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 20 Columns: 5
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): bank
-dbl (4): min, white, himin, hiwhite
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-&gt; loan_data_clean &lt;- loan_data
-
-&gt; write_csv(loan_data_clean, file = here::here("dataset", 
-+     "loan_refusal_clean.csv"))
-
-&gt; save(loan_data_clean, file = here::here("dataset/loan_refusal.RData"))</code></pre>
-</div>
-</div>
-<p>You should never use absolute paths (eg. <code>/Users/danielsussman/path/to/project/</code> or <code>C:\MA415\\Final_Project\</code>).</p>
-<p>You might consider using the <code>here</code> function fomr the <a href="https://here.r-lib.org/articles/here.html"><code>here</code> package</a> to avoid path problems.</p>
+<section id="load-and-clean-data-script" class="level2">
+<h2 class="anchored" data-anchor-id="load-and-clean-data-script">Load and clean data script</h2>
 </section>
-<section id="load-and-clean-data-script" class="level3">
-<h3 class="anchored" data-anchor-id="load-and-clean-data-script">Load and clean data script</h3>
-<p>The idea behind this file is that someone coming to your website could largely replicate your analyses after running this script on the original data sets to clean them. This file might create a derivative data set that you then use for your subsequent analysis. Note that you don’t need to run this script from every post/page. Instead, you can load in the results of this script, which could be plain text files or <code>.RData</code> files. In your data page you’ll describe how these results were created. If you have a very large data set, you might save smaller data sets that you can use for exploration purposes. To link to this file, you can use <code>[cleaning script](/scripts/load_and_clean_data.R)</code> wich appears as <a href="./scripts/load_and_clean_data.R">cleaning script</a>.</p>
-<hr>
+<section id="data-source-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-source-1">Data source</h2>
+<p>Our dataset: https://www.nber.org/research/data/vital-statistics-natality-birth-data This extensive dataset comprises 3,669,928 observations encompassing 225 distinct factors. This Natality Data, sourced from the National Vital Statistics System by the National Center for Health Statistics, offers comprehensive demographic and health information pertaining to births within a given calendar year. This microdata is meticulously compiled from details extracted from birth certificates filed across the statistics offices of each state and the District of Columbia, providing a robust foundation for in-depth analysis and insights into the dynamics of childbirth and associated health trends.</p>
+<p>For our study, the dataset stands as a valuable resource for seeking insights into the intricate interplay of maternal education, racial backgrounds, and maternal age on diverse facets of childbirth, healthcare, and demographic trends in the United States. This dataset plays a pivotal role in elucidating disparities and serves as a cornerstone for enhancing healthcare and support systems for expectant mothers and newborns, ultimately contributing to the advancement of maternal and child well-being.</p>
+<p>To link to this file, you can use <code>[cleaning script](/scripts/load_and_clean_data.R)</code> wich appears as <a href="./scripts/load_and_clean_data.R">cleaning script</a>.</p>
 </section>
+<section id="about-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-data">About the data</h2>
+<p>The variable in our dataset including: “mager”: Mother’s age of pregnancy “cig_before” (our variable): A variable we created that observes mothers who’ve smoked before pregnancy (“cig_0”), but not during(0 values for cig_1,cig_2, and cig_3) “cig_during” (our variable): A variable we created that observes mothers who’ve smoked during pregnancy (positive values in cig_1, cig_2, cig_3, cig_0) “cig_none” (our variable): A variable we created that observes whether or not the mother smoked at all “rf_gdiab”: Gestational diabetes “previs”: Number of prenatal visits “meduc”: Mother’s education in by level. “bmi”: Mother’s BMI. For Column Transformations, we have transformed the cig_0 (daily number of cigarettes before pregnancy), cig_1 (daily number of cigarettes during 1st trimester), cig_2 (daily number of cigarettes during 2nd trimester), and cig_3 (daily number of cigarettes during 3rd trimester) variables, to create two new dummy variables: “cig_before”, “cig_during”, and “cig_none”. These dummy variables would show whether or not smoking only before, during, or none at all affect the weight of the infant.</p>
 </section>
-<section id="rubric-on-this-page" class="level2">
-<h2 class="anchored" data-anchor-id="rubric-on-this-page">Rubric: On this page</h2>
-<p>You will</p>
+<section id="data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning">data cleaning</h2>
+<p>For each year, a sample of size sample_size (set to 20,000) is taken from the cleaned and structured dataset. After processing the individual yearly datasets, We combines them into one large dataset (birthdata). Finally, the combined database to Birth related statistical data and US yearly income-social economics.We also use Real Per Capita Personal Income for the United States (RPIPCUS) from Federal Reserve Economic Data.We find Birth related statistic data by web crawler the NVSS website to get yearly Birth related statistic numbers from 2016-2022. The use of additional R packages such as “pROC” and “broom” can greatly enhance the analysis and interpretation of logistic regression models, providing more depth and clarity in the results.</p>
+<p>The “pROC” package is a powerful tool in the R ecosystem designed specifically for analyzing and visualizing Receiver Operating Characteristic (ROC) curves. ROC curves are essential for evaluating the diagnostic accuracy of probability predictions in binary classification models. They plot the true positive rate (sensitivity) against the false positive rate (1 - specificity) at various threshold settings, helping to determine the threshold that best separates the two classes. The Area Under the Curve (AUC) is a single scalar value derived from the ROC curve that summarizes the model’s ability to discriminate between the positive and negative classes. An AUC value close to 1 indicates a model with excellent predictive accuracy, while an AUC close to 0.5 suggests no discriminatory power. The “pROC” package simplifies these tasks by providing functions to compute ROC curves, AUC scores, and to compare different ROC curves, thus providing a nuanced evaluation of model performance.</p>
+<p>The “broom” package in R is designed to work in tandem with modeling functions like lm() and glm(). It takes the output of these models and converts them into tidy data frames. This is particularly useful because the standard output from modeling functions in R does not lend itself easily to downstream data manipulation and visualization tasks. By using “broom,” analysts can quickly extract model coefficients, standard errors, p-values, and other important metrics from their models and use them in conjunction with packages like “ggplot2” for advanced visualizations. For instance, the tidied output from “broom” can be used to create coefficient plots which provide a visual interpretation of the influence each predictor has on the response variable, thus making the interpretation of model outputs more intuitive and insightful.</p>
+<p>The caret package effectively abstracts much of the complexity involved in the model-building process, allowing analysts and data scientists to focus on interpreting results and making decisions based on the model’s predictions. It’s a valuable addition to the data analysis workflow, particularly for those aiming to produce robust, reproducible predictive models.</p>
 <ul>
-<li>Describe where/how to find data.
-<ul>
-<li>You must include a link to the original data source(s). Make sure to provide attribution to those who collected the data.</li>
-<li>Why was the data collected/curated? Who put it together? (This is important, if you don’t know why it was collected then that might not be a good dataset to look at.</li>
-</ul></li>
-<li>Describe the different data files used and what each variable means.
-<ul>
-<li>If you have many variables then only describe the most relevant ones and summarize the rest.</li>
-</ul></li>
-<li>Describe any cleaning you had to do for your data.
-<ul>
-<li>You <em>must</em> include a link to your <code>load_and_clean_data.R</code> file.</li>
-<li>Also, describe any additional R packages you used outside of those covered in class.</li>
 <li>Describe and show code for how you combined multiple data files and any cleaning that was necessary for that.</li>
-<li>Some repetition of what you do in your <code>load_and_clean_data.R</code> file is fine and encouraged if it helps explain what you did.</li>
-</ul></li>
-<li>Organization, clarity, cleanliness of the page
-<ul>
-<li>Make sure to remove excessive warnings, use clean easy-to-read code (without side scrolling), organize with sections, use bullets and other organization tools, etc.</li>
-<li>This page should be self-contained.</li>
-</ul></li>
 </ul>
+<p>library(dplyr) birthdata &lt;-read.csv(“dataset/cleanedbirth.csv”) BirthStat &lt;- read.csv(“dataset/BirthStat.csv”) YI &lt;- read.csv(“dataset/Yearly income data.csv”) combirth &lt;- birthdata |&gt; left_join(YI, by = c(“Year” = “Year”)) allbirth &lt;- combirth |&gt; left_join(BirthStat, by = c(“Year” = “Year”))</p>
+<p>In the data consolidation process for our analysis, we orchestrated the integration of multiple datasets to construct a singular, enriched dataset using R’s dplyr package. The foundational dataset birthdata, which contains cleaned birth records, was merged with yearly income data (YI) based on the common ‘Year’ variable, ensuring a chronological alignment of data points. This initial merge formed combirth, a dataset that now encapsulates both birth records and associated income data for corresponding years.</p>
+<p>Subsequently, we augmented combirth with the BirthStat dataset, which includes various birth statistics obtained from the National Vital Statistics System (NVSS). The left_join function was employed once again on the ‘Year’ variable, creating allbirth, a comprehensive dataset that not only details birth records with socio-economic context provided by income data but also integrates broader birth statistics, enhancing the dataset’s depth and potential for nuanced analysis. This meticulous merging process was imperative for subsequent analysis, as it consolidated relevant variables into a single frame of reference for robust statistical examination.</p>
+<hr>
 
 
 </section>
