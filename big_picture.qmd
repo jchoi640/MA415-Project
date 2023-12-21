@@ -4,21 +4,20 @@ description: "How Education Levels are Redefining Motherhood Across Race"
 toc: true
 draft: FALSE
 ---
-
 ![](images/Shades-of-Beauty.jpeg)
 
 This comes from the file `big_picture.Rmd`.
 
 Think of this page as your 538/Upshot style article. This means that you should try to tell a story through the data and your analysis. Read articles from those sites and similar sites to get a feeling for what they are like. Importantly, these should be geared towards the general public. You shouldn't assume the reader understands how to interpret a linear regression. Focus on interpretation and visualizations.
 
----
-##How Education Levels are Redefining Motherhood Across Race
 
-###Problem We Aim to Solve
+## How Education Levels are Redefining Motherhood Across Race
+
+### Problem We Aim to Solve
 
 Underage pregnancies, this simple yet loaded question outlines a phenomenon that plagues families and societies all around the world. They are at a higher risk for pregnancy-related high blood pressure and its complications. Risks for the baby include premature birth and a low birth weight. Additionally, underage pregnancies can easily compromise a struggling family's finances with the additional burden of a child they were not prepared for. According to data from the National Library of Medicine, Underage pregnancies have decreased globally, from 64.5 per 1000 women in 2000 to 42.5 per 1000 women in 2021. However, there are huge differences in levels between and within countries and race. 
 
-###Pattern Behind the Data
+### Pattern Behind the Data
 In order to investigate the causes of underage pregnancies, our team conducted various statistical analyses using data from the National Bureau of Economic Research, specifically Natality Birth Data. We select random samples from 2016 to 2021 and combine them together for a comprehensive analysis, focusing on motherhood across different races and examining how education influences the age at which women begin motherhood. With running linear and logistic regression analyses, Underage pregnancy shows intricately linked to a spectrum of socio-economic, educational, and health-related factors, and these relationships have evolved distinctly.
 
 ![](images/time&income.jpg)
@@ -29,7 +28,7 @@ women from different racial backgrounds are having their first child from the ye
 
 In the “First Kid Birth Age vs Prepreg Education Level Graph”, the relationship between a woman's education level (measured from less than high school to doctorate degrees) and the age at which she has her first child is overall positive. higher education levels generally correlate with older ages at first birth, a trend consistent across all racial groups. However, the slopes and positions of the lines vary, suggesting that the influence of education on family planning decisions is experienced differently across racial communities.
 
-# Our Goal
+## Our Goal
 
 Overall, our model and study hope to be more than a theoretical exercise. We wish that our model could inform targeted educational programs that empower women to make informed decisions about motherhood. It could also assist healthcare providers to anticipate and meet the needs of expectant mothers, finally beneficial to the health and well-being of the next generation.
 
