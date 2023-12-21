@@ -10,78 +10,55 @@ draft: false
 
 This comes from the file `data.qmd`.
 
-Your first steps in this project will be to find data to work on.
 
-I recommend trying to find data that interests you and that you are knowledgeable about. A bad example would be if you have no interest in video games but your data set is about video games. I also recommend finding data that is related to current events, social justice, and other areas that have an impact.
+## Data source
 
+Our dataset: https://www.nber.org/research/data/vital-statistics-natality-birth-data 
+This extensive dataset comprises 3,669,928 observations encompassing 225 distinct factors. This Natality Data, sourced from the National Vital Statistics System by the National Center for Health Statistics, offers comprehensive demographic and health information pertaining to births within a given calendar year. This microdata is meticulously compiled from details extracted from birth certificates filed across the statistics offices of each state and the District of Columbia, providing a robust foundation for in-depth analysis and insights into the dynamics of childbirth and associated health trends.
 
-Initially, you will study _one dataset_ but later you will need to combine that data with another dataset. For this reason, I recommend finding data that has some date and/or location components. These types of data are conducive to interesting visualizations and analysis and you can also combine this data with other data that also has a date or location variable.
-Data from the census, weather data, economic data, are all relatively easy to combine with other data with time/location components.
-
-
-## What makes a good data set?
-
-* Data you are interested in and care about.
-* Data where there are a lot of potential questions that you can explore.
-* A data set that isn't completely cleaned already.
-* Multiple sources for data that you can combine.
-* Some type of time and/or location component.
+For our study, the dataset stands as a valuable resource for seeking insights into the intricate interplay of maternal education, racial backgrounds, and maternal age on diverse facets of childbirth, healthcare, and demographic trends in the United States. This dataset plays a pivotal role in elucidating disparities and serves as a cornerstone for enhancing healthcare and support systems for expectant mothers and newborns, ultimately contributing to the advancement of maternal and child well-being.
 
 
-## Where to keep data?
 
+## Load and clean data script
 
-Below 50mb: In `dataset` folder
+## Data source
 
-Above 50mb: In `dataset_ignore` folder. This folder will be ignored by `git` so you'll have to manually sync these files across your team.
+Our dataset: https://www.nber.org/research/data/vital-statistics-natality-birth-data 
+This extensive dataset comprises 3,669,928 observations encompassing 225 distinct factors. This Natality Data, sourced from the National Vital Statistics System by the National Center for Health Statistics, offers comprehensive demographic and health information pertaining to births within a given calendar year. This microdata is meticulously compiled from details extracted from birth certificates filed across the statistics offices of each state and the District of Columbia, providing a robust foundation for in-depth analysis and insights into the dynamics of childbirth and associated health trends.
 
-### Sharing your data
+For our study, the dataset stands as a valuable resource for seeking insights into the intricate interplay of maternal education, racial backgrounds, and maternal age on diverse facets of childbirth, healthcare, and demographic trends in the United States. This dataset plays a pivotal role in elucidating disparities and serves as a cornerstone for enhancing healthcare and support systems for expectant mothers and newborns, ultimately contributing to the advancement of maternal and child well-being.
 
-
-For small datasets (<50mb), you can use the `dataset` folder that is tracked by github. Add the files just like you would any other file.
-
-If you create a folder named `data` this will cause problems.
-
-For larger datasets, you'll need to create a new folder in the project root directory named `dataset-ignore`. This will be ignored by git (based off the `.gitignore` file in the project root directory) which will help you avoid issues with Github's size limits. Your team will have to manually make sure the data files in `dataset-ignore` are synced across team members.
-
-Your [load_and_clean_data.R](/scripts/load_and_clean_data.R) file is how you will load and clean your data. Here is a an example of a very simple one.
-
-```{r}
-source(
-  "scripts/load_and_clean_data.R",
-  echo = TRUE # Use echo=FALSE or omit it to avoid code output  
-)
-```
-You should never use absolute paths (eg. `/Users/danielsussman/path/to/project/` or `C:\MA415\\Final_Project\`).
-
-You might consider using the `here` function fomr the [`here` package](https://here.r-lib.org/articles/here.html) to avoid path problems.
-
-### Load and clean data script
-
-The idea behind this file is that someone coming to your website could largely replicate your analyses after running this script on the original data sets to clean them.
-This file might create a derivative data set that you then use for your subsequent analysis.
-Note that you don't need to run this script from every post/page.
-Instead, you can load in the results of this script, which could be plain text files or `.RData` files. In your data page you'll describe how these results were created. If you have a very large data set, you might save smaller data sets that you can use for exploration purposes.
 To link to this file, you can use `[cleaning script](/scripts/load_and_clean_data.R)` wich appears as [cleaning script](/scripts/load_and_clean_data.R). 
 
+## About the data 
+The variable in our dataset including: 
+“mager”: Mother’s age of pregnancy “cig_before” (our variable): A variable we created that observes mothers who’ve smoked before pregnancy  (“cig_0”), but not during(0 values for cig_1,cig_2, and cig_3) “cig_during” (our variable): A variable we created that observes mothers who’ve smoked during pregnancy (positive values in cig_1, cig_2, cig_3, cig_0) “cig_none” (our variable): A variable we created that observes whether or not the mother smoked at all “rf_gdiab”: Gestational diabetes “previs”: Number of prenatal visits  “meduc”: Mother’s education in by level.  “bmi”: Mother’s BMI. For Column Transformations, we have transformed the cig_0 (daily number of cigarettes before pregnancy), cig_1 (daily number of cigarettes during 1st trimester), cig_2 (daily number of cigarettes during 2nd trimester), and cig_3 (daily number of cigarettes during 3rd trimester) variables, to create two new dummy variables: “cig_before”, “cig_during”, and “cig_none”. These dummy variables would show whether or not smoking only before, during, or none at all affect the weight of the infant.
+
+## data cleaning
+For each year, a sample of size sample_size (set to 20,000) is taken from the cleaned and structured dataset. After processing the individual yearly datasets, We combines them into one large dataset (birthdata). Finally, the combined database to Birth related statistical data and US yearly income-social economics.We also use Real Per Capita Personal Income for the United States (RPIPCUS) from Federal Reserve Economic Data.We find Birth related statistic data by web crawler the NVSS website to get yearly  Birth related statistic numbers from 2016-2022. The use of additional R packages such as "pROC" and "broom" can greatly enhance the analysis and interpretation of logistic regression models, providing more depth and clarity in the results.
+
+The "pROC" package is a powerful tool in the R ecosystem designed specifically for analyzing and visualizing Receiver Operating Characteristic (ROC) curves. ROC curves are essential for evaluating the diagnostic accuracy of probability predictions in binary classification models. They plot the true positive rate (sensitivity) against the false positive rate (1 - specificity) at various threshold settings, helping to determine the threshold that best separates the two classes. The Area Under the Curve (AUC) is a single scalar value derived from the ROC curve that summarizes the model's ability to discriminate between the positive and negative classes. An AUC value close to 1 indicates a model with excellent predictive accuracy, while an AUC close to 0.5 suggests no discriminatory power. The "pROC" package simplifies these tasks by providing functions to compute ROC curves, AUC scores, and to compare different ROC curves, thus providing a nuanced evaluation of model performance.
+
+The "broom" package in R is designed to work in tandem with modeling functions like lm() and glm(). It takes the output of these models and converts them into tidy data frames. This is particularly useful because the standard output from modeling functions in R does not lend itself easily to downstream data manipulation and visualization tasks. By using "broom," analysts can quickly extract model coefficients, standard errors, p-values, and other important metrics from their models and use them in conjunction with packages like "ggplot2" for advanced visualizations. For instance, the tidied output from "broom" can be used to create coefficient plots which provide a visual interpretation of the influence each predictor has on the response variable, thus making the interpretation of model outputs more intuitive and insightful.
+
+The caret package effectively abstracts much of the complexity involved in the model-building process, allowing analysts and data scientists to focus on interpreting results and making decisions based on the model's predictions. It's a valuable addition to the data analysis workflow, particularly for those aiming to produce robust, reproducible predictive models.
+
+
+  * Describe and show code for how you combined multiple data files and any cleaning that was necessary for that.
+
+library(dplyr)
+birthdata <-read.csv("dataset/cleanedbirth.csv")
+BirthStat <- read.csv("dataset/BirthStat.csv")
+YI <- read.csv("dataset/Yearly income data.csv")
+combirth <- birthdata |>
+  left_join(YI, by = c("Year" = "Year"))
+allbirth <- combirth |>
+  left_join(BirthStat, by = c("Year" = "Year"))
+
+In the data consolidation process for our analysis, we orchestrated the integration of multiple datasets to construct a singular, enriched dataset using R's dplyr package. The foundational dataset birthdata, which contains cleaned birth records, was merged with yearly income data (YI) based on the common 'Year' variable, ensuring a chronological alignment of data points. This initial merge formed combirth, a dataset that now encapsulates both birth records and associated income data for corresponding years.
+
+Subsequently, we augmented combirth with the BirthStat dataset, which includes various birth statistics obtained from the National Vital Statistics System (NVSS). The left_join function was employed once again on the 'Year' variable, creating allbirth, a comprehensive dataset that not only details birth records with socio-economic context provided by income data but also integrates broader birth statistics, enhancing the dataset's depth and potential for nuanced analysis. This meticulous merging process was imperative for subsequent analysis, as it consolidated relevant variables into a single frame of reference for robust statistical examination.
 
 
 ----
-
-## Rubric: On this page
-
-You will
-
-* Describe where/how to find data.
-  * You must include a link to the original data source(s). Make sure to provide attribution to those who collected the data.
-  * Why was the data collected/curated? Who put it together? (This is important, if you don't know why it was collected then that might not be a good dataset to look at.
-* Describe the different data files used and what each variable means. 
-  * If you have many variables then only describe the most relevant ones and summarize the rest.
-* Describe any cleaning you had to do for your data.
-  * You *must* include a link to your `load_and_clean_data.R` file.
-  * Also, describe any additional R packages you used outside of those covered in class.
-  * Describe and show code for how you combined multiple data files and any cleaning that was necessary for that.
-  * Some repetition of what you do in your `load_and_clean_data.R` file is fine and encouraged if it helps explain what you did.
-* Organization, clarity, cleanliness of the page
-  * Make sure to remove excessive warnings, use clean easy-to-read code (without side scrolling), organize with sections, use bullets and other organization tools, etc.
-  * This page should be self-contained.
