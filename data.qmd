@@ -44,9 +44,6 @@ The "broom" package in R is designed to work in tandem with modeling functions l
 
 The caret package effectively abstracts much of the complexity involved in the model-building process, allowing analysts and data scientists to focus on interpreting results and making decisions based on the model's predictions. It's a valuable addition to the data analysis workflow, particularly for those aiming to produce robust, reproducible predictive models.
 
-
-  * Describe and show code for how you combined multiple data files and any cleaning that was necessary for that.
-
 library(dplyr)
 birthdata <-read.csv("dataset/cleanedbirth.csv")
 BirthStat <- read.csv("dataset/BirthStat.csv")
