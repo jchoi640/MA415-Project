@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><img src="images/Parents-photo.jpg" class="img-fluid"></p>
 <p>This comes from the file <code>analysis.qmd</code>.</p>
-<p>We describe here our detailed data analysis. This page will provide an overview of what questions you hope to ask, illustrations relevant aspects of the data with tables and figures, and a statistical model that attempts to answer part of the question. You’ll also reflect on next steps and further analysis.</p>
+<p>We describe here our detailed data analysis.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -199,26 +199,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">getwd</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Users/yuhao/Desktop/ma415/final project"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset/loan_refusal_clean.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cleanedbirth <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset"</span>, <span class="st">"cleanedbirth.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 20 Columns: 5
+<pre><code>Rows: 120000 Columns: 13
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (1): bank
-dbl (4): min, white, himin, hiwhite
+chr  (1): Race
+dbl (12): mager, meduc, m_ht_in, bmi, pwgt_r, dwgt_r, dbwt, Married, GDiabet...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset/loan_refusal.RData"</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(cleanedbirth, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset"</span>, <span class="st">"cleanedbirth.csv"</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(cleanedbirth, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset/cleanedbirth.RData"</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">getwd</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "data"            "has_annotations" "loan_data_clean"</code></pre>
+<pre><code>[1] "/Users/yuhao/Desktop/ma415/final"</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cleanedbirth <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset"</span>, <span class="st">"cleanedbirth.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 120000 Columns: 13
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (1): Race
+dbl (12): mager, meduc, m_ht_in, bmi, pwgt_r, dwgt_r, dbwt, Married, GDiabet...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "cleanedbirth"    "has_annotations"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>show_col_types <span class="ot">=</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="data-analysis-unraveling-the-ties-between-education-age-and-motherhood" class="level2">
 <h2 class="anchored" data-anchor-id="data-analysis-unraveling-the-ties-between-education-age-and-motherhood">Data Analysis: Unraveling the Ties Between Education, Age, and Motherhood</h2>
@@ -239,7 +254,8 @@ dbl (4): min, white, himin, hiwhite
 <p>Comparing multiple R-squared and adjusted R-squared values for the three models provides valuable insights into their goodness-of-fit and explanatory power. Although the differences between the models are subtle, they are important for understanding their relative validity. From the first model (0.4206) the second model (0.4207) and the third model (0.4207), both the multiple R-squared values and the adjusted R-squared values increased slightly, indicating a marginal improvement in explaining the variance of the dependent variable. This suggests that additional variables or improvements introduced in the subsequent models contributed slightly to the overall explanatory power. The adjusted R-squared values (which take into account the number of predictor variables and model complexity) follow a similar trend, showing slight improvements when we move from the first model (0.4206) the second model (0.4206) and the third model (0.4206). This emphasizes the importance of adjusting the model complexity and enhancing the value of the additional variables included. Indeed, the selected model should not only provide a higher R-squared, but should also be consistent with the theoretical framework and provide meaningful insights. Further review of the variables included, their importance, and the context of the study would help to fully understand the utility of the model.It is a given that more variables lead to higher r-square. For the p value of all three models was 2.2e-16 Less than 0.05 means that the three models were judged as “significant”.</p>
 <p>The first model AIC scores were 685678.3. The second model AIC scores were 695675.6. The third model predicts motherage by AIC Scores were 695675.6.Model comparisons using the Akaike Information Criterion (AIC) also provided valuable insights into the relative goodness of fit and complexity of the models. The AIC scores (Model 2 had the lowest score of 695675.6) indicated that Model 2 was the most parsimonious and effective in capturing the underlying patterns in the data among the models considered. The careful evaluation of each model’s AIC illuminates the trade-off between goodness-of-fit and model complexity. While a lower AIC indicates a better model fit, this must be balanced against the interpretability and utility of the model in practical applications. In essence, this model comparison exercise not only helps to select the best model, but also emphasizes the importance of a holistic and context-aware approach to statistical modeling. The process from model selection to interpretation provides a continuous cycle of refinement that ensures a dynamic and robust analytical framework for addressing complex research questions.</p>
 <p><img src="images/Learning-regression-result.png" class="img-fluid"></p>
-<p><img src="images/Mother_historgram.png" class="img-fluid"> To summarize we chose the second model. Since the Figure “Histogram of Mother’s Age” shows that our dependent variable is slightly right-skewed, in order to make the age dependent variable more normal, we log-transformed the dependent variable. And the Adjusted R- Squared went from 0.4206 to 0.4506 with a significant increase, while the AIC decreased significantly, from 695675.6 to -993302.25 with a significant decrease. Our logarithmic transformation gets better later, as it is a bit more normalized with respect to the age distribution we were trying to predict. However, the large drop that occurs is surprising and could mean that we are now using a better model, but the reason for such a significant drop is still puzzling and deserves to be investigated later.</p>
+<p><img src="images/Mother_historgram.png" class="img-fluid"></p>
+<p>To summarize we chose the second model. Since the Figure “Histogram of Mother’s Age” shows that our dependent variable is slightly right-skewed, in order to make the age dependent variable more normal, we log-transformed the dependent variable. And the Adjusted R- Squared went from 0.4206 to 0.4506 with a significant increase, while the AIC decreased significantly, from 695675.6 to -993302.25 with a significant decrease. Our logarithmic transformation gets better later, as it is a bit more normalized with respect to the age distribution we were trying to predict. However, the large drop that occurs is surprising and could mean that we are now using a better model, but the reason for such a significant drop is still puzzling and deserves to be investigated later.</p>
 <p><img src="images/linear-coef.png" class="img-fluid"></p>
 <p>Here is the Figure “Linear Regression Coefficients by Predictor” for model 2 after Log transformation, we can have an overview for the important variables for linear regression. Cig-during,Cig-before,GDbiabetes, Married, meduc(Mother education), RaceAsian, all show positive correlation on underage pregnancy.</p>
 </section>
