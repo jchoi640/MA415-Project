@@ -89,6 +89,7 @@ Secondly, the probability of underage by education and Race shows all lines star
 * Secondly, our logistic model initially suffers from imbalance, with only a small portion of the dataset representing underage pregnancy. This presents a risk of bias in an imbalanced dataset. To counteract this bias, we implemented blocking on the underage pregnancy variable, selecting 10,000 cases of underage pregnancy and 10,000 cases of non-underage pregnancy. However, this blocking significantly reduces the effect of the year on the logistic model. In the future, we might develop more balanced models or improve our blocking methods.
 * Additionally, incorporating data on factors not included in our study, such as cultural influences or access to healthcare, could further refine our understanding.
 
-
+## link for our presentation video
+https://drive.google.com/file/d/1eBVD1jB0UD7xJ1ZtwE2PYHaD5nVXlAt6/view?pli=1
 -------
 
